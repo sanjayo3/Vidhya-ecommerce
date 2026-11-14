@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GIRLIE FIT • Premium Girls' Bras</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Playfair+Display:wght@600&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #fdf9f4;
+      --rose: #ba6670;
+      --dark: #282120;
+      --line: #eadfda;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', system_ui, sans-serif;
+      background: var(--cream);
+      color: #241e1c;
+      line-height: 1.6;
+    }
+    .announcement {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 11px;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+    header {
+      background: rgba(253,249,244,0.95);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 30px;
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+    }
+    .logo span { color: var(--rose); }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+    .btn {
+      padding: 12px 26px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--rose);
+      color: white;
+      border: none;
+    }
+    .btn-primary:hover {
+      background: #9c515b;
+    }
+    .hero {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 54px;
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 17px;
+      color: #766d68;
+      margin-bottom: 32px;
+    }
+    .hero-image {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    }
+    .hero-image img {
+      width: 100%;
+      height: 560px;
+      object-fit: cover;
+    }
+    .product-section {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 30px;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: start;
+    }
+    .product-image {
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+    }
+    .product-image img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+    }
+    .product-info h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      margin-bottom: 8px;
+    }
+    .price {
+      font-size: 32px;
+      font-weight: 700;
+      margin: 20px 0;
+    }
+    .price span {
+      font-size: 18px;
+      color: #a49a96;
+      text-decoration: line-through;
+      margin-left: 12px;
+    }
+    .discount {
+      background: #f0e0d2;
+      color: var(--rose);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 700;
+      display: inline-block;
+    }
+    .options {
+      margin: 28px 0;
+    }
+    .option-label {
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: block;
+      font-size: 14px;
+    }
+    .sizes {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .size-btn {
+      padding: 10px 18px;
+      border: 2px solid var(--line);
+      background: white;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .size-btn.selected {
+      border-color: var(--rose);
+      color: var(--rose);
+    }
+    .colors {
+      display: flex;
+      gap: 12px;
+    }
+    .color {
+      width: 42px;
+      height: 42px;
+      border-radius: 6px;
+      border: 2px solid var(--line);
+      cursor: pointer;
+    }
+    .color.selected {
+      border-color: var(--rose);
+      box-shadow: 0 0 0 3px rgba(186,102,112,0.2);
+    }
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 25px 0;
+    }
+    .qty-btn {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--line);
+      background: white;
+      font-size: 20px;
+      border-radius: 4px;
+    }
+    .add-btn {
+      width: 100%;
+      padding: 18px;
+      background: var(--dark);
+      color: white;
+      font-weight: 700;
+      font-size: 15px;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+    .add-btn:hover {
+      background: var(--rose);
+    }
+    .trust {
+      max-width: 1200px;
+      margin: 100px auto;
+      padding: 0 30px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      text-align: center;
+    }
+    .trust div {
+      padding: 20px;
+    }
+    .trust h4 {
+      font-size: 15px;
+      margin: 12px 0 6px;
+    }
+    footer {
+      background: var(--dark);
+      color: #bcb0ab;
+      padding: 60px 30px 40px;
+      text-align: center;
+      font-size: 14px;
+    }
+    .cart-drawer {
+      position: fixed;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 380px;
+      background: white;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+      padding: 30px;
+      transform: translateX(100%);
+      transition: 0.3s;
+      z-index: 200;
+    }
+    .cart-drawer.open {
+      transform: translateX(0);
+    }
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    .cart-item {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .cart-item img {
+      width: 70px;
+      height: 85px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Announcement -->
+  <div class="announcement">
+    Free shipping on orders over ₹999 • 7-day easy returns
+  </div>
+
+<!-- Header -->
+  <header>
+    <nav>
+      <div class="logo">GIRLIE <span>FIT</span></div>
+      <div class="nav-right">
+        <button onclick="document.getElementById('product').scrollIntoView({behavior:'smooth'})" class="btn">Shop</button>
+        <button onclick="toggleCart()" class="btn" style="background:transparent;border:2px solid #282120;">🛍️ Cart <span id="cart-count" style="background:#ba6670;color:white;border-radius:50%;padding:2px 8px;font-size:12px;margin-left:4px;">0</span></button>
+      </div>
+    </nav>
+  </header>
+
+<!-- Hero -->
+  <section class="hero">
+    <div>
+      <h1>Premium comfort<br>for every girl.</h1>
+      <p>Soft, supportive bras designed specifically for growing girls. Thoughtful details and all-day comfort.</p>
+      <button onclick="document.getElementById('product').scrollIntoView({behavior:'smooth'})" class="btn btn-primary">Shop Now</button>
+    </div>
+    <div class="hero-image">
+      <img src="https://d3p662obnq9uz2.cloudfront.net/generated-images/45497494.webp" alt="Premium girls bra flat-lay">
+    </div>
+  </section>
+
+<!-- Product Section -->
+  <section id="product" class="product-section">
+    <div class="product-grid">
+      
+      <!-- Product Image -->
+      <div class="product-image">
+        <img src="https://d3p662obnq9uz2.cloudfront.net/generated-images/4ad29723.webp" alt="Cloud Comfort Bra">
+      </div>
+
+<!-- Product Info -->
+      <div>
+        <div style="color:#ba6670;font-weight:700;letter-spacing:1px;font-size:13px;">EVERYDAY ESSENTIALS</div>
+        <h2>Cloud Comfort Bra</h2>
+        
+        <div class="price">
+          ₹599 <span>₹899</span>
+          <span class="discount">-33% OFF</span>
+        </div>
+
+<div class="options">
+          <!-- Size -->
+          <div>
+            <span class="option-label">Size</span>
+            <div class="sizes">
+              <button class="size-btn" onclick="selectSize(this)">8-10Y</button>
+              <button class="size-btn selected" onclick="selectSize(this)">10-12Y</button>
+              <button class="size-btn" onclick="selectSize(this)">12-14Y</button>
+              <button class="size-btn" onclick="selectSize(this)">14-16Y</button>
+            </div>
+          </div>
+
+<!-- Color -->
+          <div style="margin-top:22px;">
+            <span class="option-label">Color</span>
+            <div class="colors">
+              <div class="color selected" style="background:#ffffff;border-color:#ba6670" onclick="selectColor(this,'White')"></div>
+              <div class="color" style="background:#f5d4d5" onclick="selectColor(this,'Soft Pink')"></div>
+              <div class="color" style="background:#e8d9d1" onclick="selectColor(this,'Beige')"></div>
+              <div class="color" style="background:#d7e5ee" onclick="selectColor(this,'Sky Blue')"></div>
+            </div>
+          </div>
+        </div>
+
+<!-- Quantity -->
+        <div class="quantity">
+          <span style="font-weight:600;">Quantity</span>
+          <button class="qty-btn" onclick="changeQty(-1)">−</button>
+          <span id="qty" style="font-size:18px;font-weight:600;width:30px;text-align:center;">1</span>
+          <button class="qty-btn" onclick="changeQty(1)">+</button>
+        </div>
+
+<button onclick="addToCart()" class="add-btn">ADD TO BAG</button>
+        
+        <div style="margin-top:30px;font-size:13px;color:#766d68;">
+          ✓ 100% soft cotton blend<br>
+          ✓ Seamless &amp; lightweight<br>
+          ✓ Adjustable straps
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Trust -->
+  <div class="trust">
+    <div>
+      <div style="font-size:32px;">✓</div>
+      <h4>Certified Safe</h4>
+      <p style="font-size:13px;color:#766d68;">Tested for kids</p>
+    </div>
+    <div>
+      <div style="font-size:32px;">♡</div>
+      <h4>Perfect Fit</h4>
+      <p style="font-size:13px;color:#766d68;">Easy exchange</p>
+    </div>
+    <div>
+      <div style="font-size:32px;">⟲</div>
+      <h4>Free Returns</h4>
+      <p style="font-size:13px;color:#766d68;">7-day policy</p>
+    </div>
+    <div>
+      <div style="font-size:32px;">★</div>
+      <h4>Trusted</h4>
+      <p style="font-size:13px;color:#766d68;">Loved by parents</p>
+    </div>
+  </div>
+
+<footer>
+    <p>© 2026 GIRLIE FIT — Premium girls' bras • Made with care in India</p>
+  </footer>
+
+<!-- Cart Drawer -->
+  <div id="cart-drawer" class="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Bag</h3>
+      <button onclick="toggleCart()" style="font-size:26px;background:none;border:none;">×</button>
+    </div>
+    <div id="cart-items"></div>
+    <div style="margin-top:30px;">
+      <div style="display:flex;justify-content:space-between;font-weight:700;margin-bottom:20px;">
+        <span>Subtotal</span>
+        <span id="cart-total">₹0</span>
+      </div>
+      <button onclick="checkout()" class="add-btn" style="background:#282120;">PROCEED TO CHECKOUT</button>
+    </div>
+  </div>
+
+<script>
+    let cart = [];
+    let currentQty = 1;
+    let selectedSize = "10-12Y";
+    let selectedColor = "White";
+
+function selectSize(el) {
+      document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedSize = el.textContent;
+    }
+
+function selectColor(el, color) {
+      document.querySelectorAll('.color').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedColor = color;
+    }
+
+function changeQty(val) {
+      currentQty = Math.max(1, currentQty + val);
+      document.getElementById('qty').textContent = currentQty;
+    }
+
+function addToCart() {
+      const item = {
+        name: "Cloud Comfort Bra",
+        price: 599,
+        size: selectedSize,
+        color: selectedColor,
+        qty: currentQty,
+        image: "https://d3p662obnq9uz2.cloudfront.net/generated-images/4ad29723.webp"
+      };
+      cart.push(item);
+      updateCartCount();
+      showCart();
+      currentQty = 1;
+      document.getElementById('qty').textContent = 1;
+    }
+
+function updateCartCount() {
+      document.getElementById('cart-count').textContent = cart.length;
+    }
+
+function toggleCart() {
+      const drawer = document.getElementById('cart-drawer');
+      drawer.classList.toggle('open');
+      if (drawer.classList.contains('open')) renderCart();
+    }
+
+function renderCart() {
+      const container = document.getElementById('cart-items');
+      container.innerHTML = '';
+      let total = 0;
+
+if (cart.length === 0) {
+        container.innerHTML = '<p style="color:#766d68;text-align:center;padding:40px 0;">Your bag is empty</p>';
+        document.getElementById('cart-total').textContent = '₹0';
+        return;
+      }
+
+cart.forEach((item, index) => {
+        total += item.price * item.qty;
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <div style="flex:1">
+            <div style="font-weight:600">${item.name}</div>
+            <div style="font-size:13px;color:#766d68">${item.size} • ${item.color}</div>
+            <div style="margin-top:6px">₹${item.price} × ${item.qty}</div>
+            <button onclick="removeFromCart(${index})" style="color:#ba6670;background:none;border:none;font-size:12px;margin-top:4px">Remove</button>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+
+document.getElementById('cart-total').textContent = `₹${total}`;
+    }
+
+function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartCount();
+      renderCart();
+    }
+
+function checkout() {
+      if (cart.length === 0) return;
+      const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+      alert(`Thank you! Order total: ₹${total}\n\nThis is a demo. Connect Razorpay/Stripe for real payments.`);
+      cart = [];
+      updateCartCount();
+      document.getElementById('cart-drawer').classList.remove('open');
+    }
+
+function updateCartCount() {
+      document.getElementById('cart-count').textContent = cart.length;
+    }
+
+// Initialize with one size selected
+    window.onload = function() {
+      const sizeBtns = document.querySelectorAll('.size-btn');
+      if (sizeBtns.length > 0) sizeBtns[1].classList.add('selected');
+    }
+  </script>
+</body>
+</html>
